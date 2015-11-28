@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Event Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/general.css">
+    <link rel="stylesheet" href="style/timeline.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/googleMapsInitializer.js"></script>
+</head>
+<body>
+<div class="container-fluid text-center row" style="padding:0px;">
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <section id="eventHome" class="row container-fluid">
+            <h2 class="text-uppercase">{{info.header.eventType}}</h2>
+
+            <h1 class="title">{{info.header.title}}</h1>
+
+            <div class="infoBoxTimeLocation">
+                <p><strong id="time">{{info.header.dates}}</strong></p>
+
+                <p id="place">{{info.header.location}}</p>
+            </div>
+
+            <button type="button" class="btn btn-lg signUpButton">{{info.header.buttonMessage}}</button>
+        </section>
+        <section id="eventDescription" class="row container-fluid text-center">
+            <p id="description" class="container">
+              {{ info.description}}
+            </p>
+        </section>
+        <sections id="eventSpeakers" class="row container-fluid text-center">
+            <h2 id="titleSchedule">Speakers</h2>
+
+            <div id="eventSpeakersContainer" class="container">
+                <div ng-repeat="speaker in info.speakers" class="speaker">
+                    <img class="speakerDetail" ng-src="{{speaker.pictureUrl}}">
+
+                    <div class="speakerDetail name">{{speaker.name}}</div>
+                    <div class="speakerDetail"> {{speaker.description}}</div>
+                </div>
+            </div>
+        </sections>
+        <section id="eventSchedule" class="row container-fluid text-center">
+            <div class="container">
+                <h2 id="titleSchedule">Schedule</h2>
+                <ul class="nav nav-tabs">
+                    <li ng-repeat="(key,val) in info.days">
+                        <a data-toggle="tab" ng-href="#{{key}}" ng-click="adjustHeight(key)">{{key}}</a>
+                    </li>
+                </ul>
+                <div class="tab-content container">
+                    <div ng-repeat="(key,val) in info.days" id="{{key}}" class="container text-center tab-pane fade">
+                        <ol class="text-center" id="timeline">
+                            <li ng-repeat="event in val" end-repeat-directive>
+                                <time>{{event.time}}</time>
+                                <p>{{event.name}}</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="eventLocation" class="row container-fluid text-center">
+            <h3>{{info.locationName}}</h3>
+            <div id="map" class="text-center"></div>
+        </section>
+    </div>
+
+</div>
+</body>
+</html>
