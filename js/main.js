@@ -127,8 +127,53 @@ var fullEventInfoEnglish = {
 
 var app = angular.module('myApp', []);
 
-app.controller('myCtrl', function ($scope) {
+app.controller('myCtrl', function ($scope, $http, $location, $anchorScroll) {
+	
     $scope.info = genericInfo;
+	$scope.registration = {
+		hasError : false,
+		error : '',
+		submitted : false,
+		submitting : false,
+		name : '',
+		email : '',
+		description : ''
+	};
+	
+	$scope.register = function(){
+		$scope.registration.submitting = true;
+		
+		$http({
+			url: 'your url',
+			method: 'post',
+			params: {
+				name : $scope.registration.name,
+				email : $scope.registration.email,
+				description : $scope.registration.description
+			}
+		})
+		.success(function(data) {					
+			$scope.registration.hasError = false;
+			$scope.registration.error = '';
+			//handle respose here
+		})
+		.error(function(data, status) {
+			$scope.registration.hasError = true;
+			$scope.registration.error = 'Unable to submit.';
+			//handle error here
+			console.error('Submit error', status, data);
+		})
+		.finally(function() {
+			$scope.registration.submitted = true;
+			$scope.registration.submitting = false;
+		});
+	};
+	
+	$scope.gotoRegistration = function() {
+      $location.hash('eventRegistration');
+      $anchorScroll();
+    };
+	
     $scope.adjustHeight = function (tabId) {
         var tabIdWithHash = '#' + tabId;
         $('.tab-content').height($(tabIdWithHash).height());

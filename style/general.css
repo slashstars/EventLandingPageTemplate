@@ -121,3 +121,82 @@ h1, h2 {
     overflow: hidden;
 }
 
+/*Registration form style*/
+		
+#eventRegistration {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #537679;
+    color: white;
+}
+
+#registrationForm{
+	padding-top: 50px;
+	max-width: 900px;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.reg-input {
+	width: 100%;
+	border-radius: 3px;
+	border: 0;	
+	color: black;
+}
+
+.reg-textbox{
+	margin: auto;
+	margin-bottom: 20px;	
+	padding: 3px 8px 3px 8px;
+	height: 34px;
+}
+
+.reg-textarea {
+	text-align: left;
+	text-transform: none;
+	resize: none;
+	height: 150px;
+	padding: 15px 8px 15px 8px;
+}
+
+.notification p {
+	border-radius: 3px;
+	color: #FFF;
+	padding: 5px 10px;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.error p {
+	background: #E96656;
+}
+
+.success p {
+	background: #34d293;
+}
+
+.reg-button {
+    transition: background-color 0.5s ease;
+    background-color: #A7625E;
+    border-color: white;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: bold;
+	margin: 16px 5px 5px 0px;
+	float:left;
+}
+
+.reg-button:hover {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+}
+
+div.recaptcha-container{
+	margin: 5px 5px 5px 5px;
+	display: inline-block; 
+	opacity: 1;
+	float: left;
+}
+
