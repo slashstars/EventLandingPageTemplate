@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="style/general.css">
     <link rel="stylesheet" href="style/timeline.css">
 
-
+    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script src="js/angular-recaptcha.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/googleMapsInitializer.js"></script>
 </head>
@@ -100,11 +101,11 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-3 col-sm-3 text-right">
-								<button class="btn btn-lg reg-button" ng-click="register()">Register</button>
+								<button class="btn btn-lg reg-button" ng-click="register()">{{registrationFormButtonText}}</button>
 							</div>
-							<!--<div class="col-lg-9 col-sm-9 text-left">
-								[recaptcha]
-							</div>-->					
+							<div class="col-lg-9 col-sm-9 text-left">
+								<div vc-recaptcha key="recaptchaPublicKey" class="recaptcha-container"></div>
+							</div>					
 						</div>
 					</fieldset>
 				</form>	

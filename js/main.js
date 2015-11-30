@@ -125,12 +125,15 @@ var fullEventInfoEnglish = {
     }
 };
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['vcRecaptcha']);
 
-app.controller('myCtrl', function ($scope, $http, $location, $anchorScroll) {
-	
+app.controller('myCtrl',['$scope', '$http', '$location', '$anchorScroll', 'vcRecaptchaService', 
+	function ($scope, $http, $location, $anchorScroll, recaptcha) {	
     $scope.info = genericInfo;
+	$scope.recaptchaPublicKey = '---- YOUR PUBLIC KEY GOES HERE ----';
 	$scope.registration = {
+		registerText : 'Register',
+		submittingText : 'Submitting',
 		hasError : false,
 		error : '',
 		submitted : false,
@@ -139,23 +142,34 @@ app.controller('myCtrl', function ($scope, $http, $location, $anchorScroll) {
 		email : '',
 		description : ''
 	};
+	$scope.registrationFormButtonText = $scope.registration.registerText;
 	
 	$scope.register = function(){
-		$scope.registration.submitting = true;
+		$scope.registration.submitted = false;
+		$scope.registration.hasError = false;
+		if(recaptcha.getResponse() === ''){
+			$scope.registration.error = "Please, verify that you're not a robot.";
+			$scope.registration.hasError = true;
+			$scope.registration.submitted = true;
+			return;
+		}
 		
+		$scope.registration.submitting = true;	
+		$scope.registrationFormButtonText = $scope.registration.submittingText;
 		$http({
-			url: 'your url',
+			url: '---- YOUR WEB API URL GOES HERE ----',
 			method: 'post',
 			params: {
 				name : $scope.registration.name,
 				email : $scope.registration.email,
-				description : $scope.registration.description
+				description : $scope.registration.description,
+				'g-recaptcha-response': recaptcha.getResponse()
 			}
 		})
 		.success(function(data) {					
 			$scope.registration.hasError = false;
 			$scope.registration.error = '';
-			//handle respose here
+			//handle response here
 		})
 		.error(function(data, status) {
 			$scope.registration.hasError = true;
@@ -164,6 +178,7 @@ app.controller('myCtrl', function ($scope, $http, $location, $anchorScroll) {
 			console.error('Submit error', status, data);
 		})
 		.finally(function() {
+			$scope.registrationFormButtonText = $scope.registration.registerText;
 			$scope.registration.submitted = true;
 			$scope.registration.submitting = false;
 		});
@@ -199,4 +214,4 @@ app.controller('myCtrl', function ($scope, $http, $location, $anchorScroll) {
         console.log($scope.info.location.lat + '-' + $scope.info.location.lon);
         initialize($scope.info.location.lat, $scope.info.location.lon);
     });
-});
+}]);
