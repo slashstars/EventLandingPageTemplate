@@ -5,15 +5,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://fonts.googleapis.com/css?family=Roboto:700&subset=cyrillic-ext,latin,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700&subset=cyrillic-ext,latin,latin-ext,cyrillic'
+          rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/general.css">
     <link rel="stylesheet" href="style/timeline.css">
 
+    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async
+            defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/angular-recaptcha.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/eventInformation.js"></script>
     <script src="js/googleMapsInitializer.js"></script>
@@ -90,9 +94,10 @@
 
             <div id="registrationForm">
                 <div ng-show="registration.submitted">
-                    <div class="notification success" ng-show="!registration.hasError"><p>Thanks, your registration was
-                        successfull!</p></div>
-                    <div class="notification error" ng-show="registration.hasError"><p>Error: {{registration.error}}</p>
+                    <div class="notification success" ng-show="!registration.hasError"><p>{{'register.successMessage' |
+                        translate}}</p></div>
+                    <div class="notification error" ng-show="registration.hasError"><p>Error: {{register.errorMessage |
+                        translate}}</p>
                     </div>
                 </div>
                 <form>
@@ -122,9 +127,9 @@
                                     translate}}
                                 </button>
                             </div>
-                            <!--<div class="col-lg-9 col-sm-9 text-left">
-                                [recaptcha]
-                            </div>-->
+                            <div class="col-lg-9 col-sm-9 text-left">
+                                <div vc-recaptcha key="recaptchaPublicKey" class="recaptcha-container"></div>
+                            </div>
                         </div>
                     </fieldset>
                 </form>

@@ -68,7 +68,8 @@ var genericInfoEN = {
         descriptionPlaceholder: "Tell us a little bit about yourself",
         aboutPlaceholder: 'A little bit about yourself',
         buttonMessage: 'Register',
-        successMessage: 'Thanks, your registration was successful!'
+        successMessage: 'Thanks, your registration was successful!',
+        errorMessage: "There was a problem. Registration not sent."
     }
 };
 
@@ -83,7 +84,7 @@ var genericInfoBG = {
         location: "Сиатъл, САЩ",
         buttonMessage: "ЗАПАЗИ МЯСТО"
     },
-    description: "Но банани смях от макро. От това му заболяване. Играчи футбол в седят пропаганда. Членове Микровълнови нужда свободата . Без значение колко . Еней  .  ниси на леглото , удобни и ,   променлив ток ,   ,  . Това клинично  ,  агенция , по време на един човек , банани  , Хусто .",
+    description: "Юллюм шапэрэт зыд эа, нык ад аугюэ кэтэро омйттам, нэ про рыбюм фабулаз еракюндйа. Хаж эррэм тымпор эррорибуз ад, мэя ут кытэрож конжтетуто, хаж ут омнэжквюы опортэры ыкчпэтында. Экз эжт эвэртё патриоквюы, ты хёз трётанё мандамюч мэдиокретатым.",
     scheduleTitle: 'График',
     days: {
         1: {
@@ -138,14 +139,15 @@ var genericInfoBG = {
         descriptionPlaceholder: "Разкажи ни малко за себе си.",
         aboutPlaceholder: 'Разкажи ни малко за себе си.',
         buttonMessage: 'Регистрирай се',
-        successMessage: 'Благодаря, регистрацията е успешна!'
+        successMessage: 'Благодаря, регистрацията е успешна!',
+        errorMessage: "Имаше проблем. Регистрацията не е успешна."
     }
 };
 
 /*
  Generic info
  */
-var fullEventInfoEnglish = {
+var fullEventInfoEn = {
     header: {
         eventType: "FREE WORKSHOP",
         title: "GAME DEVELOPMENT WITH UNITY",
