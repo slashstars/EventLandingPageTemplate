@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat', 'sans-serif';
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .row {
@@ -34,7 +34,6 @@ body {
 }
 
 #eventSpeakers #eventSpeakersContainer .speaker {
-    font-family: 'Montserrat', 'sans-serif';
     width: 200px;
     display: inline-block;
     vertical-align: top;
@@ -83,7 +82,6 @@ body {
 }
 
 h1, h2 {
-    font-family: 'Montserrat', 'sans-serif';
     font-weight: 700;
     line-height: 35px;
 }

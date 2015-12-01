@@ -2,70 +2,78 @@
 <html lang="en">
 <head>
     <title>My Event Page</title>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700&subset=cyrillic-ext,latin,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/general.css">
     <link rel="stylesheet" href="style/timeline.css">
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="js/main.js"></script>
+    <script src="js/eventInformation.js"></script>
     <script src="js/googleMapsInitializer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.8.1/angular-translate.min.js"></script>
 </head>
 <body>
 <div class="container-fluid text-center row" style="padding:0px;">
-
     <div ng-app="myApp" ng-controller="myCtrl">
         <section id="eventHome" class="row container-fluid">
-            <h2 class="text-uppercase">{{info.header.eventType}}</h2>
+            <div>
+                <button class="btn ng-scope" ng-click="changeLanguage('en')">EN</button>
+                <button class="btn ng-scope" ng-click="changeLanguage('bg')">BG</button>
+            </div>
+            <h2 class="text-uppercase">{{'header.eventType' | translate }}</h2>
 
-            <h1 class="title">{{info.header.title}}</h1>
+            <h1 class="title">{{'header.title' | translate }}</h1>
 
             <div class="infoBoxTimeLocation">
-                <p><strong id="time">{{info.header.dates}}</strong></p>
+                <p><strong id="time">{{'header.dates' | translate}}</strong></p>
 
-                <p id="place">{{info.header.location}}</p>
+                <p id="place">{{'header.location' | translate}}</p>
             </div>
 
-            <button type="button" class="btn btn-lg signUpButton" ng-click="gotoRegistration()">{{info.header.buttonMessage}}</button>
+            <button type="button" class="btn btn-lg signUpButton" ng-click="gotoRegistration()">
+                {{'header.buttonMessage' | translate}}
+            </button>
         </section>
         <section id="eventDescription" class="row container-fluid text-center">
             <p id="description" class="container">
-              {{ info.description}}
+                {{ 'description' | translate}}
             </p>
         </section>
         <section id="eventSpeakers" class="row container-fluid text-center">
-            <h2 id="titleSchedule">Speakers</h2>
+            <h2 id="titleSchedule">{{'speakersTitle' | translate}}</h2>
 
             <div id="eventSpeakersContainer" class="container">
-                <div ng-repeat="speaker in info.speakers" class="speaker">
-                    <img class="speakerDetail" ng-src="{{speaker.pictureUrl}}">
+                <div ng-repeat="(key, value) in info.speakers" class="speaker">
+                    <img class="speakerDetail" ng-src="{{value.pictureUrl}}">
 
-                    <div class="speakerDetail name">{{speaker.name}}</div>
-                    <div class="speakerDetail"> {{speaker.description}}</div>
+                    <div class="speakerDetail name">{{'speakers.' + key + '.name' | translate}}</div>
+                    <div class="speakerDetail"> {{'speakers.' + key + '.description' | translate}}</div>
                 </div>
             </div>
         </section>
         <section id="eventSchedule" class="row container-fluid text-center">
             <div class="container">
-                <h2 id="titleSchedule">Schedule</h2>
+                <h2 id="titleSchedule">{{'scheduleTitle' | translate}}</h2>
                 <ul class="nav nav-tabs">
-                    <li ng-repeat="(key,val) in info.days">
-                        <a data-toggle="tab" ng-href="#{{key}}" ng-click="adjustHeight(key)">{{key}}</a>
+                    <li ng-repeat="(key, value) in info.days">
+                        <a data-toggle="tab" ng-href="#day{{key}}"
+                           ng-click="adjustHeight('day' + key)">{{value.name}}</a>
                     </li>
                 </ul>
                 <div class="tab-content container">
-                    <div ng-repeat="(key,val) in info.days" id="{{key}}" class="container text-center tab-pane fade">
+                    <div ng-repeat="(key, value) in info.days" id="day{{key}}"
+                         class="container text-center tab-pane fade">
                         <ol class="text-center" id="timeline">
-                            <li ng-repeat="event in val" end-repeat-directive>
-                                <time>{{event.time}}</time>
-                                <p>{{event.name}}</p>
+                            <li ng-repeat="(key1, value1) in value.blocks" end-repeat-directive>
+                                <time>{{value1.time}}</time>
+                                <p>{{'days.' + key + '.blocks.' + key1 + '.name' | translate }}</p>
                             </li>
                         </ol>
                     </div>
@@ -73,42 +81,54 @@
             </div>
         </section>
         <section id="eventLocation" class="row container-fluid text-center">
-            <h3>{{info.locationName}}</h3>
+            <h3>{{'locationName' | translate}}</h3>
+
             <div id="map" class="text-center"></div>
         </section>
-		<section id="eventRegistration" class="row container-fluid text-center">
-            <h2>Register</h2>
-			<div id="registrationForm">
-				<div ng-show="registration.submitted">
-					<div class="notification success" ng-show="!registration.hasError"><p>Thanks, your registration was successfull!</p></div>
-					<div class="notification error" ng-show="registration.hasError"><p>Error: {{registration.error}}</p></div>
-				</div>
-				<form>
-					<fieldset ng-disabled="registration.submitting">
-						<div class="row">
-							<div class="col-lg-6 col-sm-6">
-								<input type="text" placeholder="Your Name" class="reg-input reg-textbox" ng-model="registration.name" value="">
-							</div>
-							<div class="col-lg-6 col-sm-6">
-								<input type="email" placeholder="Your Email" class="reg-input reg-textbox" ng-model="registration.email" value="">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-sm-12">
-								<textarea class="reg-input reg-textarea" placeholder="A little bit about yourself" ng-model="registration.description" value=""></textarea>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-3 col-sm-3 text-right">
-								<button class="btn btn-lg reg-button" ng-click="register()">Register</button>
-							</div>
-							<!--<div class="col-lg-9 col-sm-9 text-left">
-								[recaptcha]
-							</div>-->					
-						</div>
-					</fieldset>
-				</form>	
-			</div>					
+        <section id="eventRegistration" class="row container-fluid text-center">
+            <h2>{{'register.title' | translate}}</h2>
+
+            <div id="registrationForm">
+                <div ng-show="registration.submitted">
+                    <div class="notification success" ng-show="!registration.hasError"><p>Thanks, your registration was
+                        successfull!</p></div>
+                    <div class="notification error" ng-show="registration.hasError"><p>Error: {{registration.error}}</p>
+                    </div>
+                </div>
+                <form>
+                    <fieldset ng-disabled="registration.submitting">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <input type="text" placeholder="{{'register.namePlaceholder' | translate}}"
+                                       class="reg-input reg-textbox"
+                                       ng-model="registration.name" value="">
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <input type="email" placeholder="{{'register.emailPlaceholder' | translate}}"
+                                       class="reg-input reg-textbox"
+                                       ng-model="registration.email" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <textarea class="reg-input reg-textarea"
+                                          placeholder="{{'register.descriptionPlaceholder' | translate}}"
+                                          ng-model="registration.description" value=""></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-3 text-right">
+                                <button class="btn btn-lg reg-button" ng-click="register()">{{'register.buttonMessage' |
+                                    translate}}
+                                </button>
+                            </div>
+                            <!--<div class="col-lg-9 col-sm-9 text-left">
+                                [recaptcha]
+                            </div>-->
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </section>
     </div>
 </div>
