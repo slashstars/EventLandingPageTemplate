@@ -27,9 +27,14 @@
 <div class="container-fluid text-center row" style="padding:0px;">
     <div ng-app="myApp" ng-controller="myCtrl">
         <section id="eventHome" class="row container-fluid">
-            <div>
-                <button class="btn ng-scope" ng-click="changeLanguage('en')">EN</button>
-                <button class="btn ng-scope" ng-click="changeLanguage('bg')">BG</button>
+            <div id="languageSelection" class="btn-group" data-toggle="buttons">
+
+                <label ng-repeat="key in translationKeys"
+                       class="btn btn-default {{selectedLanguage === key ? 'active' : ''}}"
+                       ng-click="changeLanguage(key)">
+                    <input type="radio"> {{key}}
+                </label>
+
             </div>
             <h2 class="text-uppercase">{{'header.eventType' | translate }}</h2>
 
@@ -96,7 +101,8 @@
                 <div ng-show="registration.submitted">
                     <div class="notification success" ng-show="!registration.hasError"><p>{{'register.successMessage' |
                         translate}}</p></div>
-                    <div class="notification error" ng-show="registration.hasError"><p>Error: {{register.errorMessage |
+                    <div class="notification error" ng-show="registration.hasError"><p>Error: {{'register.errorMessage'
+                        |
                         translate}}</p>
                     </div>
                 </div>

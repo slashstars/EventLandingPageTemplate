@@ -1,17 +1,32 @@
 var app = angular.module('myApp', ['pascalprecht.translate', 'vcRecaptcha']);
 
+//Register translations
 app.config(function ($translateProvider) {
-    $translateProvider.translations('en', genericInfoEN);
-    $translateProvider.translations('bg', genericInfoBG);
+    var translations = genericInfo;
+    var preferredLanguage;
 
-    $translateProvider.preferredLanguage('en');
+    for (var language in translations) {
+        if (translations.hasOwnProperty(language)) {
+            $translateProvider.translations(language, translations[language]);
+
+            if (translations[language].hasOwnProperty('preferred'))
+                preferredLanguage = language;
+        }
+    }
+
+    if (preferredLanguage == undefined)
+        preferredLanguage = getKeys(translations)[0];
+
+    $translateProvider.preferredLanguage(preferredLanguage);
 });
 
 app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$translate', 'vcRecaptchaService',
     function ($scope, $http, $location, $anchorScroll, $translate, recaptcha) {
+        var info = genericInfo;
 
-        //Info objects are in js/eventInformation.js
-        $scope.info = genericInfoEN;
+        $scope.info = info[Object.keys(info)[0]];
+        $scope.translationKeys = getKeys(info);
+
         $scope.recaptchaPublicKey = '---- YOUR PUBLIC KEY GOES HERE ----';
 
         $scope.changeLanguage = function (key) {
@@ -75,9 +90,14 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
         $scope.adjustHeight = function (tabId) {
             var tabIdWithHash = '#' + tabId;
             $('.tab-content').height($(tabIdWithHash).height());
+            console.log($translate.getAvailableLanguageKeys());
         };
 
+        $scope.selectedLanguage = $translate.use();
+
         angular.element(document).ready(function () {
+
+
             //Expand first tab on initial page load
             $('.tab-content').height($('.tab-content.container div:first').height());
 
@@ -94,7 +114,8 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
                 value.text = sanitizedText;
             });
 
-            console.log($scope.info.location.lat + '-' + $scope.info.location.lon);
             initialize($scope.info.location.lat, $scope.info.location.lon);
         });
     }]);
+
+
