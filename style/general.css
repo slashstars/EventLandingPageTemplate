@@ -17,6 +17,10 @@ body {
     text-align: center;
 }
 
+#languageSelection {
+
+}
+
 #languageSelection label {
     text-transform: uppercase;
 }
@@ -76,6 +80,21 @@ body {
 
 #titleSchedule {
     padding: 30px;
+}
+
+#faq {
+    background-color: #C1D5C3;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+#faq .faq-title {
+    margin-bottom: 30px;
+}
+
+#faq p {
+    text-align: left;
+    font-size: larger;
 }
 
 .title {

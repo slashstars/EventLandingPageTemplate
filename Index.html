@@ -46,7 +46,7 @@
                 <p id="place">{{'header.location' | translate}}</p>
             </div>
 
-            <button type="button" class="btn btn-lg signUpButton" ng-click="gotoRegistration()">
+            <button type="button" class="btn btn-lg signUpButton" ng-click="goToRegistration()">
                 {{'header.buttonMessage' | translate}}
             </button>
         </section>
@@ -93,6 +93,17 @@
             <h3>{{'locationName' | translate}}</h3>
 
             <div id="map" class="text-center"></div>
+        </section>
+        <section id="faq" class="row container-fluid text-center">
+            <h2 class="text-uppercase faq-title">{{'FAQtitle' | translate }}</h2>
+
+            <div class="container">
+                <div class="col-sm-6" ng-repeat="(key, value) in info.FAQ">
+                    <h4 class="benefit-title">{{'FAQ.' + key + '.title' | translate }}</h4>
+
+                    <p>{{'FAQ.' + key + '.answer' | translate }}</p>
+                </div>
+            </div>
         </section>
         <section id="eventRegistration" class="row container-fluid text-center">
             <h2>{{'register.title' | translate}}</h2>

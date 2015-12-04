@@ -24,6 +24,7 @@ function initialize(lat, lon) {
         center: new google.maps.LatLng(lat, lon),
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false
     }
     var map = new google.maps.Map(mapCanvas, mapOptions)
     var marker = new google.maps.Marker({
