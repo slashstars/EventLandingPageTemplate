@@ -102,7 +102,7 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
             $('.tab-content').height($('.tab-content.container div:first').height());
 
             //Set the first tab to active on initial page load
-            $('.nav.nav-tabs li:first').addClass("active");
+            $('#eventSchedule .nav li:first').addClass("active");
 
             //Set the first tab container to active on initial page load
             $('.tab-content.container div:first').addClass("in active");

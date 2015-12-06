@@ -27,15 +27,14 @@
 <div class="container-fluid text-center row" style="padding:0px;">
     <div ng-app="myApp" ng-controller="myCtrl">
         <section id="eventHome" class="row container-fluid">
-            <div id="languageSelection" class="btn-group" data-toggle="buttons">
+            <ul class="nav nav-pills" id="languageSelection">
 
-                <label ng-repeat="key in translationKeys"
-                       class="btn btn-default {{selectedLanguage === key ? 'active' : ''}}"
-                       ng-click="changeLanguage(key)">
-                    <input type="radio"> {{key}}
-                </label>
+                <li ng-repeat="key in translationKeys"
+                    class="{{selectedLanguage === key ? 'active' : ''}}">
+                    <a href="" data-toggle="tab" ng-click="changeLanguage(key)">{{key}}</a>
+                </li>
 
-            </div>
+            </ul>
             <h2 class="text-uppercase">{{'header.eventType' | translate }}</h2>
 
             <h1 class="title">{{'header.title' | translate }}</h1>
@@ -70,19 +69,22 @@
         <section id="eventSchedule" class="row container-fluid text-center">
             <div class="container">
                 <h2 id="titleSchedule">{{'scheduleTitle' | translate}}</h2>
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-pills">
                     <li ng-repeat="(key, value) in info.days">
                         <a data-toggle="tab" ng-href="#day{{key}}"
-                           ng-click="adjustHeight('day' + key)">{{value.name}}</a>
+                           ng-click="adjustHeight('day' + key)">{{'days.' + key + '.name' | translate}}</a>
                     </li>
                 </ul>
                 <div class="tab-content container">
                     <div ng-repeat="(key, value) in info.days" id="day{{key}}"
                          class="container text-center tab-pane fade">
+                        <div class="verticalAxis"></div>
                         <ol class="text-center" id="timeline">
-                            <li ng-repeat="(key1, value1) in value.blocks" end-repeat-directive>
-                                <time>{{value1.time}}</time>
-                                <p>{{'days.' + key + '.blocks.' + key1 + '.name' | translate }}</p>
+                            <li ng-repeat="(key1, value1) in value.blocks" end-repeat-directive class="col-xs-12">
+                                <div class="insideBlock">
+                                    <time>{{value1.time}}</time>
+                                    <p>{{'days.' + key + '.blocks.' + key1 + '.name' | translate }}</p>
+                                </div>
                             </li>
                         </ol>
                     </div>

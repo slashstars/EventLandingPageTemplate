@@ -7,29 +7,27 @@ body {
     padding: 0px;
 }
 
-.nav-tabs {
-    display: inline-block;
-    float: none;
-    vertical-align: top;
-}
-
-.nav-tabs {
-    text-align: center;
-}
-
-#languageSelection {
-
-}
-
-#languageSelection label {
-    text-transform: uppercase;
-}
-
 #eventHome {
     padding-top: 120px;
     padding-bottom: 120px;
     background-color: #537679;
     color: white;
+}
+
+#eventHome .nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#eventHome .nav a {
+    color: white
+}
+
+#eventHome li:not(.active) a:hover {
+    background-color: darkgray;
 }
 
 #eventDescription {
@@ -39,6 +37,13 @@ body {
 
 #eventSchedule {
     overflow: hidden;
+}
+
+#eventSchedule .nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    text-align: center;
 }
 
 #eventSpeakers #eventSpeakersContainer .speaker {
@@ -80,6 +85,10 @@ body {
 
 #titleSchedule {
     padding: 30px;
+}
+
+#eventLocation h2, h3 {
+margin:0px;
 }
 
 #faq {
