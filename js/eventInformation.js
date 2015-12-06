@@ -47,12 +47,12 @@ var genericInfo = {
             2: {
                 name: "Jane Doe",
                 description: "CEO of Generic Elements",
-                pictureUrl: "http://mcmorris.house.gov/uploads/McM%20Official%20Photo%203-8-11.jpg"
+                pictureUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bc/Woman_with_a_light_brown_blouse_and_a_red_scarf.jpg"
             },
             3: {
                 name: "George Truman",
                 description: "Beard Consultant",
-                pictureUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f1/David_Culler_Portrait.jpg"
+                pictureUrl: "https://upload.wikimedia.org/wikipedia/en/0/06/Michael_Garten_displays_his_beard.jpg"
             }
         },
         locationName: "Salmon Theater, Seattle",

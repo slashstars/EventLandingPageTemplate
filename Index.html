@@ -59,10 +59,10 @@
 
             <div id="eventSpeakersContainer" class="container">
                 <div ng-repeat="(key, value) in info.speakers" class="speaker">
-                    <img class="speakerDetail" ng-src="{{value.pictureUrl}}">
+                    <div class="speakerDetail profilePic" ng-style="{'background-image':'url({{value.pictureUrl}})'}"></div>
 
                     <div class="speakerDetail name">{{'speakers.' + key + '.name' | translate}}</div>
-                    <div class="speakerDetail"> {{'speakers.' + key + '.description' | translate}}</div>
+                    <div class="speakerDetail description"> {{'speakers.' + key + '.description' | translate}}</div>
                 </div>
             </div>
         </section>

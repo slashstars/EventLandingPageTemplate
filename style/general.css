@@ -54,19 +54,20 @@ body {
     margin-right: 50px;
 }
 
-#eventSpeakers #eventSpeakersContainer .speaker img {
-    border: 4px #a8635f solid;
-    border-radius: 15px;
-    display: block;
-    margin: auto;
-    width: 100%;
-    height: 100%;
+#eventSpeakers #eventSpeakersContainer .speaker .profilePic {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    border: 4px #890404 solid;
+    border-radius: 20px;
 }
 
 #eventSpeakers #eventSpeakersContainer .speaker .name {
-    margin-top: 2px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 22px;
     margin: 15px 0 0;
     line-height: 1;
     color: #54777a;
@@ -74,6 +75,11 @@ body {
 
 #eventSpeakers #eventSpeakersContainer .speakerDetail {
     width: 100%;
+    font-size: 18px;
+}
+
+#eventSpeakers #eventSpeakersContainer .description {
+    margin-top: 5px;
 }
 
 #description {
@@ -88,7 +94,7 @@ body {
 }
 
 #eventLocation h2, h3 {
-margin:0px;
+    margin: 0px;
 }
 
 #faq {
@@ -152,7 +158,6 @@ h1, h2 {
 }
 
 /*Registration form style*/
-
 #eventRegistration {
     padding-top: 80px;
     padding-bottom: 80px;
