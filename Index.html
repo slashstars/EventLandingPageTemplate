@@ -26,81 +26,96 @@
 <body>
 <div class="container-fluid text-center row" style="padding:0px;">
     <div ng-app="myApp" ng-controller="myCtrl">
-        <section id="eventHome" class="row container-fluid">
-            <ul class="nav nav-pills" id="languageSelection">
+        <div id="homeWrapper" class="container-fluid row">
+            <section id="eventHome" class="row container">
 
-                <li ng-repeat="key in translationKeys"
-                    class="{{selectedLanguage === key ? 'active' : ''}}">
-                    <a href="" data-toggle="tab" ng-click="changeLanguage(key)">{{key}}</a>
-                </li>
+                <ul class="nav nav-pills" id="languageSelection">
 
-            </ul>
-            <h2 class="text-uppercase">{{'header.eventType' | translate }}</h2>
-
-            <h1 class="title">{{'header.title' | translate }}</h1>
-
-            <div class="infoBoxTimeLocation">
-                <p><strong id="time">{{'header.dates' | translate}}</strong></p>
-
-                <p id="place">{{'header.location' | translate}}</p>
-            </div>
-
-            <button type="button" class="btn btn-lg signUpButton" ng-click="goToRegistration()">
-                {{'header.buttonMessage' | translate}}
-            </button>
-        </section>
-        <section id="eventDescription" class="row container-fluid text-center">
-            <p id="description" class="container">
-                {{ 'description' | translate}}
-            </p>
-        </section>
-        <section id="eventSpeakers" class="row container-fluid text-center">
-            <h2 id="titleSchedule">{{'speakersTitle' | translate}}</h2>
-
-            <div id="eventSpeakersContainer" class="container">
-                <div ng-repeat="(key, value) in info.speakers" class="speaker">
-                    <div class="speakerDetail profilePic" ng-style="{'background-image':'url({{value.pictureUrl}})'}"></div>
-
-                    <div class="speakerDetail name">{{'speakers.' + key + '.name' | translate}}</div>
-                    <div class="speakerDetail description"> {{'speakers.' + key + '.description' | translate}}</div>
-                </div>
-            </div>
-        </section>
-        <section id="eventSchedule" class="row container-fluid text-center">
-            <div class="container">
-                <h2 id="titleSchedule">{{'scheduleTitle' | translate}}</h2>
-                <ul class="nav nav-pills">
-                    <li ng-repeat="(key, value) in info.days">
-                        <a data-toggle="tab" ng-href="#day{{key}}"
-                           ng-click="adjustHeight('day' + key)">{{'days.' + key + '.name' | translate}}</a>
+                    <li ng-repeat="key in translationKeys"
+                        class="{{selectedLanguage === key ? 'active' : ''}}">
+                        <a href="" data-toggle="tab" ng-click="changeLanguage(key)">{{key}}</a>
                     </li>
+
                 </ul>
-                <div class="tab-content container">
-                    <div ng-repeat="(key, value) in info.days" id="day{{key}}"
-                         class="container text-center tab-pane fade">
-                        <div class="verticalAxis"></div>
-                        <ol class="text-center" id="timeline">
-                            <li ng-repeat="(key1, value1) in value.blocks" end-repeat-directive class="col-xs-12">
-                                <div class="insideBlock">
-                                    <time>{{value1.time}}</time>
-                                    <p>{{'days.' + key + '.blocks.' + key1 + '.name' | translate }}</p>
-                                </div>
-                            </li>
-                        </ol>
+                <h2 class="text-uppercase">{{'header.eventType' | translate }}</h2>
+
+                <h1 class="title">{{'header.title' | translate }}</h1>
+
+                <div class="infoBoxTimeLocation">
+                    <p><strong id="time">{{'header.dates' | translate}}</strong></p>
+
+                    <p id="place" style="font-weight:bold">{{'header.location' | translate}}</p>
+                </div>
+
+                <button type="button" class="btn btn-lg signUpButton" ng-click="goToRegistration()">
+                    {{'header.buttonMessage' | translate}}
+                </button>
+
+            </section>
+        </div>
+        <div id="descriptionWrapper" class="container-fluid row">
+            <section id="eventDescription" class="row text-center container">
+                <p id="description">
+                    {{ 'description' | translate}}
+                </p>
+            </section>
+        </div>
+        <div id="speakersWrapper" class="container-fluid row">
+            <section id="eventSpeakers" class="row container text-center">
+                <div id="eventSpeakersInner" class="fullAuto">
+                    <h2 id="titleSchedule">{{'speakersTitle' | translate}}</h2>
+
+                    <div id="eventSpeakersContainer" class="container">
+                        <div ng-repeat="(key, value) in info.speakers" class="speaker">
+                            <div class="speakerDetail profilePic"
+                                 ng-style="{'background-image':'url({{value.pictureUrl}})'}"></div>
+
+                            <div class="speakerDetail name">{{'speakers.' + key + '.name' | translate}}</div>
+                            <div class="speakerDetail description"> {{'speakers.' + key + '.description' | translate}}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        <div id="scheduleWrapper" class="container-fluid row">
+            <section id="eventSchedule" class="row container text-center">
+                <div class="container">
+                    <h2 id="titleSchedule">{{'scheduleTitle' | translate}}</h2>
+                    <ul class="nav nav-pills">
+                        <li ng-repeat="(key, value) in info.days">
+                            <a data-toggle="tab" ng-href="#day{{key}}"
+                               ng-click="adjustHeight('day' + key)">{{'days.' + key + '.name' | translate}}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content container">
+                        <div ng-repeat="(key, value) in info.days" id="day{{key}}"
+                             class="container text-center tab-pane fade">
+                            <div class="verticalAxis"></div>
+                            <ol class="text-center" id="timeline">
+                                <li ng-repeat="(key1, value1) in value.blocks" end-repeat-directive class="col-xs-12">
+                                    <div class="insideBlock">
+                                        <time>{{value1.time}}</time>
+                                        <p>{{'days.' + key + '.blocks.' + key1 + '.name' | translate }}</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <section id="eventLocation" class="row container-fluid text-center">
-            <h3>{{'locationName' | translate}}</h3>
-
+            <div id="eventLocationTitle" class="container">
+                <h3>{{'locationName' | translate}}</h3>
+            </div>
             <div id="map" class="text-center"></div>
         </section>
         <section id="faq" class="row container-fluid text-center">
             <h2 class="text-uppercase faq-title">{{'FAQtitle' | translate }}</h2>
 
             <div class="container">
-                <div class="col-sm-6" ng-repeat="(key, value) in info.FAQ">
+                <div class="col-sm-6 faqArticle" ng-repeat="(key, value) in info.FAQ">
                     <h4 class="benefit-title">{{'FAQ.' + key + '.title' | translate }}</h4>
 
                     <p>{{'FAQ.' + key + '.answer' | translate }}</p>
@@ -141,8 +156,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3 col-sm-3 text-right">
-                                <button class="btn btn-lg reg-button" ng-click="register()">{{'register.buttonMessage' |
+                            <div class="col-lg-4 col-sm-4 text-right">
+
+                            </div>
+                            <div class="col-lg-4 col-sm-4 text-right">
+                            </div>
+                            <div class="col-lg-4 col-sm-4 text-right">
+                                <button class="btn btn-lg reg-button signUpButton" ng-click="register()">
+                                    {{'register.buttonMessage' |
                                     translate}}
                                 </button>
                             </div>

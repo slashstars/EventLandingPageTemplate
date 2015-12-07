@@ -2,7 +2,7 @@ function initialize(lat, lon) {
     var customMapType = new google.maps.StyledMapType([
         {
             stylers: [
-                {hue: '#A5B5B6'},
+                {hue: '#FFE450'},
                 {gamma: 0.9},
                 {weight: 0.1}
             ]
@@ -10,7 +10,7 @@ function initialize(lat, lon) {
 
         {
             featureType: 'water',
-            stylers: [{color: '#890000'}]
+            stylers: [{color: '#FFE450'}]
         }
     ], {
         name: 'Custom Style'
