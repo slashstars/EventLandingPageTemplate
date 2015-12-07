@@ -85,7 +85,7 @@
                     <ul class="nav nav-pills">
                         <li ng-repeat="(key, value) in info.days">
                             <a data-toggle="tab" ng-href="#day{{key}}"
-                               ng-click="adjustHeight('day' + key)">{{'days.' + key + '.name' | translate}}</a>
+                               ng-click="openTab('day' + key)">{{'days.' + key + '.name' | translate}}</a>
                         </li>
                     </ul>
                     <div class="tab-content container">
@@ -156,19 +156,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-sm-4 text-right">
-
-                            </div>
-                            <div class="col-lg-4 col-sm-4 text-right">
+                            <div class="col-lg-8 col-sm-8 text-left">
+								<div vc-recaptcha key="recaptchaPublicKey" class="recaptcha-container"></div>
                             </div>
                             <div class="col-lg-4 col-sm-4 text-right">
                                 <button class="btn btn-lg reg-button signUpButton" ng-click="register()">
                                     {{'register.buttonMessage' |
                                     translate}}
                                 </button>
-                            </div>
-                            <div class="col-lg-9 col-sm-9 text-left">
-                                <div vc-recaptcha key="recaptchaPublicKey" class="recaptcha-container"></div>
                             </div>
                         </div>
                     </fieldset>

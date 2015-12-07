@@ -1,7 +1,7 @@
 var app = angular.module('myApp', ['pascalprecht.translate', 'vcRecaptcha']);
 
 //Register translations
-app.config(function ($translateProvider) {
+app.config(function ($translateProvider, $locationProvider) {
     var translations = genericInfo;
     var preferredLanguage;
 
@@ -18,6 +18,12 @@ app.config(function ($translateProvider) {
         preferredLanguage = getKeys(translations)[0];
 
     $translateProvider.preferredLanguage(preferredLanguage);
+	
+	$locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false,
+        rewriteLinks: false
+    });
 });
 
 app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$translate', 'vcRecaptchaService',
@@ -83,12 +89,12 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
                 });
         };
         $scope.goToRegistration = function () {
-            $location.hash('eventRegistration');
+			$location.hash('eventRegistration');
             $anchorScroll();
         }
 
-        $scope.adjustHeight = function (tabId) {
-            var tabIdWithHash = '#' + tabId;
+        $scope.openTab = function (tabId) {
+			var tabIdWithHash = '#' + tabId;
             $('.tab-content').height($(tabIdWithHash).height());
             console.log($translate.getAvailableLanguageKeys());
         };
