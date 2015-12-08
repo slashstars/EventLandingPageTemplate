@@ -88,8 +88,8 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
                     $scope.registration.submitting = false;
                 });
         };
-        $scope.goToRegistration = function () {
-			$location.hash('eventRegistration');
+        $scope.goToSection = function (sectionId) {
+			$location.hash(sectionId);
             $anchorScroll();
         }
 
@@ -102,7 +102,19 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
         $scope.selectedLanguage = $translate.use();
 
         angular.element(document).ready(function () {
-
+			//Hide .navbar initially
+			$(".navbar-hide-show").hide();
+			//Fade in .navbar
+			$(function () {
+				$(window).scroll(function () {
+					//Set distance user needs to scroll before we start fadeIn
+					if ($(this).scrollTop() > 100) {
+						$('.navbar-hide-show').fadeIn();
+					} else {
+						$('.navbar-hide-show').fadeOut();
+					}
+				});
+			});
 
             //Expand first tab on initial page load
             $('.tab-content').height($('.tab-content.container div:first').height());

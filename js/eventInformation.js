@@ -5,6 +5,7 @@
 var genericInfo = {
     en: {
         preferred: true,
+		homeTitle: "Home",
         header: {
             eventType: "CONFERENCE",
             title: "MY AWESOME EVENT",
@@ -12,6 +13,7 @@ var genericInfo = {
             location: "Seattle, USA",
             buttonMessage: "RESERVE MY SEAT"
         },
+		descriptionTitle: "Description",
         description: "Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo.",
         scheduleTitle: 'Schedule',
         days: {
@@ -55,6 +57,7 @@ var genericInfo = {
                 pictureUrl: "https://upload.wikimedia.org/wikipedia/en/0/06/Michael_Garten_displays_his_beard.jpg"
             }
         },
+		locationTitle: "Location",
         locationName: "Salmon Theater, Seattle",
         location: {
             lat: 47.544524,
@@ -79,8 +82,8 @@ var genericInfo = {
                 answer: "Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. "
             }
         },
+		registerTitle: "Register",
         register: {
-            title: 'Register',
             namePlaceholder: 'Your name',
             emailPlaceholder: 'Your email',
             descriptionPlaceholder: "Tell us a little bit about yourself",
@@ -91,6 +94,7 @@ var genericInfo = {
         }
     },
     bg: {
+		homeTitle: "Начало",
         header: {
             eventType: "Конференция",
             title: "Страхотното ми събитие",
@@ -98,6 +102,7 @@ var genericInfo = {
             location: "Сиатъл, САЩ",
             buttonMessage: "ЗАПАЗИ МЯСТО"
         },
+		descriptionTitle: "Описание",
         description: "Юллюм шапэрэт зыд эа, нык ад аугюэ кэтэро омйттам, нэ про рыбюм фабулаз еракюндйа. Хаж эррэм тымпор эррорибуз ад, мэя ут кытэрож конжтетуто, хаж ут омнэжквюы опортэры ыкчпэтында. Экз эжт эвэртё патриоквюы, ты хёз трётанё мандамюч мэдиокретатым.",
         scheduleTitle: 'График',
         days: {
@@ -175,13 +180,14 @@ var genericInfo = {
                 pictureUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f1/David_Culler_Portrait.jpg"
             }
         },
+		locationTitle: "Място",
         locationName: "Салмън Тиътър, Сиатъл",
         location: {
             lat: 47.544524,
             lon: -122.307359
         },
+		registerTitle: "Регистрация",
         register: {
-            title: 'Регистрация',
             namePlaceholder: 'Твоето име',
             emailPlaceholder: 'Твоя мейл',
             descriptionPlaceholder: "Разкажи ни малко за себе си.",

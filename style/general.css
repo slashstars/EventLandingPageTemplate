@@ -1,6 +1,5 @@
 body {
     font-family: 'Roboto', sans-serif !important;
-
 }
 
 .row {
@@ -308,4 +307,27 @@ div.recaptcha-container {
     font-size: larger;
 }
 
+/* Navigation */
+.navbar{
+	margin: 0 0 0 0 !important;
+	background-color: rgba(255, 252, 245) !important;	
+}
 
+.navbar-nav > li > a{
+	border-radius: 6px;
+}
+
+.navbar-nav > li > a{
+	color: #363636 !important;	
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #FFE450;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
