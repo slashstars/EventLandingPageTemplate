@@ -47,6 +47,13 @@ body section, .fullAuto {
 /*End: Custom pills*/
 
 /*Theme button*/
+a.signUpButton{
+	-webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+	text-decoration: none;
+}
+
 .signUpButton {
     transition: background-color 0.5s ease;
     background-color: #FFE450;
@@ -318,12 +325,18 @@ div.recaptcha-container {
 }
 
 .navbar-nav > li > a{
-	color: #363636 !important;	
+	color: #363636 !important;
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li.active > a{
+a.navAnchor, .navbar-nav > li > a{
+	outline: 0;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li.active > a{
     background-color: #FFE450;
 }
+
+
 
 a.anchor {
     display: block;

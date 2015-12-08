@@ -42,13 +42,13 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">							
 				<ul class="nav navbar-nav navbar-right">
-				    <li><a href="#homeAnchor" ng-click="goToSection('homeAnchor')">{{'homeTitle' | translate}}</a></li>
-					<li><a href="#descriptionAnchor" ng-click="goToSection('descriptionAnchor')">{{'descriptionTitle' | translate}}</a></li>
-					<li><a href="#speakersAnchor" ng-click="goToSection('speakersAnchor')">{{'speakersTitle' | translate}}</a></li>
-					<li><a href="#scheduleAnchor" ng-click="goToSection('scheduleAnchor')">{{'scheduleTitle' | translate}}</a></li>
-					<li><a href="#locationAnchor" ng-click="goToSection('locationAnchor')">{{'locationTitle' | translate}}</a></li>
-					<li><a href="#faqAnchor" ng-click="goToSection('faqAnchor')">{{'FAQtitle' | translate }}</a></li>
-					<li><a href="#registrationAnchor" ng-click="goToSection('registrationAnchor')">{{'registerTitle' | translate}}</a></li>
+				    <li><a href="#homeAnchor" class="navAnchor">{{'homeTitle' | translate}}</a></li>
+					<li><a href="#descriptionAnchor" class="navAnchor">{{'descriptionTitle' | translate}}</a></li>
+					<li><a href="#speakersAnchor" class="navAnchor">{{'speakersTitle' | translate}}</a></li>
+					<li><a href="#scheduleAnchor" class="navAnchor">{{'scheduleTitle' | translate}}</a></li>
+					<li><a href="#locationAnchor" class="navAnchor">{{'locationTitle' | translate}}</a></li>
+					<li><a href="#faqAnchor" class="navAnchor">{{'FAQtitle' | translate }}</a></li>
+					<li><a href="#registrationAnchor" class="navAnchor">{{'registerTitle' | translate}}</a></li>
 				</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
@@ -74,9 +74,9 @@
                     <p id="place" style="font-weight:bold">{{'header.location' | translate}}</p>
                 </div>
 
-                <button type="button" class="btn btn-lg signUpButton" ng-click="goToSection('eventRegistration')">
+                <a class="btn btn-lg signUpButton navAnchor" href="#registrationAnchor">
                     {{'header.buttonMessage' | translate}}
-                </button>
+                </a>
 
             </section>
         </div>

@@ -107,7 +107,7 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
 			//Fade in .navbar
 			$(function () {
 				$(window).scroll(function () {
-					//Set distance user needs to scroll before we start fadeIn
+					//Set distance user needs to scroll before you start fadeIn
 					if ($(this).scrollTop() > 100) {
 						$('.navbar-hide-show').fadeIn();
 					} else {
@@ -115,11 +115,18 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
 					}
 				});
 			});
-			
+			//Highlight navigation links as you scroll
 			$('body').scrollspy({
 				target: '#navigation',
 				offset: 50
 			});
+			//Smooth scroll when navigating 
+			$('.navAnchor').click(function(){
+				$('html, body').animate({
+				scrollTop: $( $.attr(this, 'href') ).offset().top
+				}, 700);
+				return false;
+}			);
 
             //Expand first tab on initial page load
             $('.tab-content').height($('.tab-content.container div:first').height());
