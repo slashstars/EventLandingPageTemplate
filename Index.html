@@ -42,21 +42,21 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">							
 				<ul class="nav navbar-nav navbar-right">
-				    <li><a ng-click="goToSection('homeAnchor')">{{'homeTitle' | translate}}</a></li>
-					<li><a ng-click="goToSection('descriptionAnchor')">{{'descriptionTitle' | translate}}</a></li>
-					<li><a ng-click="goToSection('speakersAnchor')">{{'speakersTitle' | translate}}</a></li>
-					<li><a ng-click="goToSection('scheduleAnchor')">{{'scheduleTitle' | translate}}</a></li>
-					<li><a ng-click="goToSection('locationAnchor')">{{'locationTitle' | translate}}</a></li>
-					<li><a ng-click="goToSection('faqAnchor')">{{'FAQtitle' | translate }}</a></li>
-					<li><a ng-click="goToSection('registrationAnchor')">{{'registerTitle' | translate}}</a></li>
+				    <li><a href="" ng-click="goToSection('homeAnchor')">{{'homeTitle' | translate}}</a></li>
+					<li><a href="" ng-click="goToSection('descriptionAnchor')">{{'descriptionTitle' | translate}}</a></li>
+					<li><a href="" ng-click="goToSection('speakersAnchor')">{{'speakersTitle' | translate}}</a></li>
+					<li><a href="" ng-click="goToSection('scheduleAnchor')">{{'scheduleTitle' | translate}}</a></li>
+					<li><a href="" ng-click="goToSection('locationAnchor')">{{'locationTitle' | translate}}</a></li>
+					<li><a href="" ng-click="goToSection('faqAnchor')">{{'FAQtitle' | translate }}</a></li>
+					<li><a href="" ng-click="goToSection('registrationAnchor')">{{'registerTitle' | translate}}</a></li>
 				</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
         <div id="homeWrapper" class="container-fluid row">
+			<a class="anchor" id="homeAnchor"></a>
             <section id="eventHome" class="row container">
-				<a class="anchor" id="homeAnchor"></a>
-                <ul class="nav nav-pills" id="languageSelection">
+				<ul class="nav nav-pills" id="languageSelection">
 
                     <li ng-repeat="key in translationKeys"
                         class="{{selectedLanguage === key ? 'active' : ''}}">
@@ -81,17 +81,17 @@
             </section>
         </div>
         <div id="descriptionWrapper" class="container-fluid row">
-            <section id="eventDescription" class="row text-center container">
-                <a class="anchor" id="descriptionAnchor"></a>
-				<p id="description">
+			<a class="anchor" id="descriptionAnchor"></a>
+			<section id="eventDescription" class="row text-center container">
+                <p id="description">
                     {{ 'description' | translate}}
                 </p>
             </section>
         </div>
         <div id="speakersWrapper" class="container-fluid row">
+            <a class="anchor" id="speakersAnchor"></a>
             <section id="eventSpeakers" class="row container text-center">
-			    <a class="anchor" id="speakersAnchor"></a>
-                <div id="eventSpeakersInner" class="fullAuto">
+			    <div id="eventSpeakersInner" class="fullAuto">
                     <h2 id="titleSchedule">{{'speakersTitle' | translate}}</h2>
 
                     <div id="eventSpeakersContainer" class="container">
@@ -108,9 +108,9 @@
             </section>
         </div>
         <div id="scheduleWrapper" class="container-fluid row">
-            <section id="eventSchedule" class="row container text-center">
-				<a class="anchor" id="scheduleAnchor"></a>
-                <div class="container">
+			<a class="anchor" id="scheduleAnchor"></a>
+			<section id="eventSchedule" class="row container text-center">
+				<div class="container">
                     <h2 id="titleSchedule">{{'scheduleTitle' | translate}}</h2>
                     <ul class="nav nav-pills">
                         <li ng-repeat="(key, value) in info.days">
@@ -135,15 +135,15 @@
                 </div>
             </section>
         </div>
+		<a class="anchor" id="locationAnchor"></a>
         <section id="eventLocation" class="row container-fluid text-center">
-			<a class="anchor" id="locationAnchor"></a>
-            <div id="eventLocationTitle" class="container">
+			<div id="eventLocationTitle" class="container">
                 <h3>{{'locationName' | translate}}</h3>
             </div>
             <div id="map" class="text-center"></div>
         </section>
-        <section id="faq" class="row container-fluid text-center">
-			<a class="anchor" id="faqAnchor"></a>
+		<a class="anchor" id="faqAnchor"></a>
+        <section id="faq" class="row container-fluid text-center">			
             <h2 class="text-uppercase faq-title">{{'FAQtitle' | translate }}</h2>
 
             <div class="container">
@@ -154,9 +154,9 @@
                 </div>
             </div>
         </section>
+		<a class="anchor" id="registrationAnchor"></a>
         <section id="eventRegistration" class="row container-fluid text-center">
-			<a class="anchor" id="registrationAnchor"></a>
-            <h2>{{'registerTitle' | translate}}</h2>
+			<h2>{{'registerTitle' | translate}}</h2>
 			
             <div id="registrationForm">
                 <div ng-show="registration.submitted">

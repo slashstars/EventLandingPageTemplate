@@ -90,7 +90,7 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
         };
         $scope.goToSection = function (sectionId) {
 			$location.hash(sectionId);
-            $anchorScroll();
+			$anchorScroll();
         }
 
         $scope.openTab = function (tabId) {
