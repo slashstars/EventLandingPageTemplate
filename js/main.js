@@ -126,17 +126,17 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
 				scrollTop: $( $.attr(this, 'href') ).offset().top
 				}, 700);
 				return false;
-}			);
-
+			});
+			//Close navigation menu on click
+			$(".navbar-nav li a").click(function(event) {
+				$(".navbar-collapse").collapse('hide');
+			});
             //Expand first tab on initial page load
             $('.tab-content').height($('.tab-content.container div:first').height());
-
             //Set the first tab to active on initial page load
             $('#eventSchedule .nav li:first').addClass("active");
-
             //Set the first tab container to active on initial page load
             $('.tab-content.container div:first').addClass("in active");
-
             //Replace '_' in schedule section name
             $.each($('a[data-toggle="tab"]'), function (index, value) {
                 var sanitizedText = value.text;
