@@ -115,6 +115,11 @@ app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$tra
 					}
 				});
 			});
+			
+			$('body').scrollspy({
+				target: '#navigation',
+				offset: 50
+			});
 
             //Expand first tab on initial page load
             $('.tab-content').height($('.tab-content.container div:first').height());
