@@ -332,7 +332,7 @@ a.navAnchor, .navbar-nav > li > a{
 	outline: 0;
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li.active > a{
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li.active > a, .navbar-default .navbar-nav > li.active > a:focus{
     background-color: #FFE450;
 }
 
