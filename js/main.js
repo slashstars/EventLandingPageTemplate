@@ -2,7 +2,7 @@ var app = angular.module('myApp', ['pascalprecht.translate', 'vcRecaptcha']);
 
 //Register translations
 app.config(function ($translateProvider, $locationProvider) {
-    var translations = genericInfo;
+    var translations = eventInfo;
     var preferredLanguage;
 
     for (var language in translations) {
@@ -28,7 +28,7 @@ app.config(function ($translateProvider, $locationProvider) {
 
 app.controller('myCtrl', ['$scope', '$http', '$location', '$anchorScroll', '$translate', 'vcRecaptchaService',
     function ($scope, $http, $location, $anchorScroll, $translate, recaptcha) {
-        var info = genericInfo;
+        var info = eventInfo;
 
         $scope.info = info[Object.keys(info)[0]];
         $scope.translationKeys = getKeys(info);
