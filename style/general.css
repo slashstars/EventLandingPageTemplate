@@ -8,7 +8,7 @@ body {
 }
 
 body section, .fullAuto {
-    margin: auto !important;
+    margin: auto !important;ap
 }
 
 /*Custom pills */
@@ -47,12 +47,6 @@ body section, .fullAuto {
 /*End: Custom pills*/
 
 /*Theme button*/
-a.signUpButton{
-	-webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-	text-decoration: none;
-}
 
 .signUpButton {
     transition: background-color 0.5s ease;
@@ -173,7 +167,7 @@ a.signUpButton{
 
 #map {
     margin: auto;
-    width: 100%;
+   
     height: 400px;
     overflow: hidden;
 }
